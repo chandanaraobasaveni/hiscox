@@ -1,0 +1,16 @@
+Q1. What are the assumptions you have made for this service and why?
+    Upon reviewing Alex's notebook, I observed that while it was functional, it lacked proper organization. I determined that we could refine the code and implement it as a scheduled job. I assumed we would continue with batch processing, given that this approach aligns with their current daily load operations. This methodology appeared effective and warranted continuation. Additionally, processing 1,200 applications simultaneously is more efficient than handling them individually. I further assumed that the data team would continue to provide clean data in the established format. While this assumption may be optimistic, Alex's code appeared to be designed with this expectation in mind.
+
+Q2. What considerations are there to ensure the business can leverage this service?
+    Based on my experience deploying machine learning systems, the primary considerations are user adoption and system reliability. The claims team requires comprehensive training on interpreting risk scores and established workflows for managing flagged applications. I have observed numerous projects fail due to users' lack of trust in or understanding of model outputs.
+    Given that these systems influence financial decisions, we require robust monitoring capabilities, explainability features for regulatory compliance, and reliable fallback procedures in the event of system failure
+
+Q3. Which traditional teams within the business would you need to talk to and why?
+    Coordination with the database team was essential because Alex's notebook utilized column names that do not exist in the production environment. The field he referenced as "app_date" corresponds to "application_received_date" in our system.
+    The claims team, as the primary users of this system, expressed a preference for actionable outputs rather than probability values. They required simple classifications such as "approve" or "review required," which necessitated reformatting the output structure accordingly.
+    Collaboration with the data engineering team was also required to ensure our prediction job executes after their nightly data load completes. We coordinated the scheduling to prevent any operational conflicts.
+
+Q4. What is in and out of scope for your responsibility?
+    I am responsible for ensuring the successful deployment and operation of the code in the production environment. This encompasses building the pipeline, implementing error handling mechanisms, establishing monitoring systems, and ensuring the system can process 1,200 applications daily.
+    My responsibilities include maintaining system uptime, addressing operational issues as they arise, and managing the infrastructure required for daily batch processing operations. I implement validation checks and employ defensive coding practices to maintain service availability.
+    Model development activities fall outside my scope of responsibility, including feature engineering, algorithm selection, and performance optimization. While I do not modify the underlying model logic, I ensure robust implementation through comprehensive validation and defensive programming practices.
